@@ -6,8 +6,7 @@
   "scripts": {
     "build": "node build.js && mkdir -p public && cp -r dist/* public/",
     "watch": "node build.js --watch",
-    "serve": "npx http-server -p 8080 -c-1",
-    "vercel-build": "npm run build"
+    "serve": "npx http-server -p 8080 -c-1"
   },
   "keywords": [
     "analytics",
