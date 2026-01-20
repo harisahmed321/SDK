@@ -1,0 +1,9 @@
+node_modules
+.git
+.env.local
+examples
+src
+\*.md
+.gitignore
+build.js
+package-lock.json
