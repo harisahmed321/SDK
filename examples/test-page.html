@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatsi Analytics SDK - Test Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 40px 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 32px;
+      }
+
+      .subtitle {
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 16px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      .section h2 {
+        color: #444;
+        margin-bottom: 20px;
+        font-size: 24px;
+        border-bottom: 2px solid #667eea;
+        padding-bottom: 10px;
+      }
+
+      .button-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+      }
+
+      button,
+      .button {
+        padding: 12px 24px;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      button:hover,
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-primary {
+        background: #667eea;
+        color: white;
+      }
+
+      .btn-success {
+        background: #10b981;
+        color: white;
+      }
+
+      .btn-warning {
+        background: #f59e0b;
+        color: white;
+      }
+
+      .btn-danger {
+        background: #ef4444;
+        color: white;
+      }
+
+      .btn-secondary {
+        background: #6b7280;
+        color: white;
+      }
+
+      .product-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 20px;
+        background: #f9fafb;
+      }
+
+      .product-card img {
+        width: 100%;
+        border-radius: 6px;
+        margin-bottom: 12px;
+      }
+
+      .product-card h3 {
+        color: #333;
+        margin-bottom: 8px;
+        font-size: 18px;
+      }
+
+      .product-card .price {
+        color: #667eea;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 12px;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      form {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 15px;
+      }
+
+      input[type='search'],
+      input[type='email'],
+      input[type='text'] {
+        flex: 1;
+        padding: 12px;
+        border: 2px solid #e5e7eb;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 4px 8px;
+        background: #10b981;
+        color: white;
+        border-radius: 4px;
+        font-size: 12px;
+        margin-left: 8px;
+      }
+
+      .info-box {
+        background: #eff6ff;
+        border: 1px solid #3b82f6;
+        border-radius: 6px;
+        padding: 15px;
+        margin-bottom: 30px;
+      }
+
+      .info-box strong {
+        color: #1e40af;
+      }
+
+      code {
+        background: #f3f4f6;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: 'Courier New', monospace;
+        font-size: 13px;
+        color: #ef4444;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🚀 Chatsi Analytics SDK Test Page</h1>
+      <p class="subtitle">
+        All buttons below are automatically tracked - no coding required!
+      </p>
+
+      <div class="info-box">
+        <strong>✅ SDK Status:</strong> Loaded and tracking events
+        automatically<br />
+        <strong>📊 Viewing in PostHog:</strong> Check your PostHog dashboard for
+        events<br />
+        <strong>🐛 Debug Mode:</strong> Open browser console to see captured
+        events
+      </div>
+
+      <!-- Add to Cart Buttons -->
+      <div class="section">
+        <h2>🛒 Add to Cart Buttons</h2>
+        <p>
+          These buttons use common e-commerce class names and will be
+          auto-tracked:
+        </p>
+        <div class="button-grid">
+          <button
+            class="add-to-cart btn-primary"
+            data-product-id="123"
+            data-product-name="Wireless Headphones"
+            data-product-price="99.99"
+          >
+            Add to Cart
+          </button>
+          <button
+            class="addtocart btn-primary"
+            data-product-id="456"
+            data-product-name="Smart Watch"
+          >
+            Buy Now
+          </button>
+          <button class="add-to-bag btn-primary">Add to Bag</button>
+          <button class="btn-add-cart btn-primary">Shop Now</button>
+          <button class="product-form__submit btn-primary">
+            Add to Cart (Shopify)
+          </button>
+          <button class="single_add_to_cart_button btn-primary">
+            Add to Cart (WooCommerce)
+          </button>
+          <button class="action primary tocart btn-primary">
+            Add to Cart (Magento)
+          </button>
+          <button data-button-type="add-cart" class="btn-primary">
+            Add to Cart (BigCommerce)
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Cards -->
+      <div class="section">
+        <h2>📦 Product Cards</h2>
+        <p>Click on products to track product views:</p>
+        <div class="product-grid">
+          <div
+            class="product-card"
+            data-product-id="101"
+            data-product-name="Laptop Pro"
+            data-product-price="1299.99"
+            data-category="Electronics"
+          >
+            <img
+              src="https://via.placeholder.com/250x200/667eea/ffffff?text=Laptop+Pro"
+              alt="Laptop Pro"
+            />
+            <h3>Laptop Pro</h3>
+            <div class="price">$1,299.99</div>
+            <button class="add-to-cart btn-primary">Add to Cart</button>
+            <button class="add-to-wishlist btn-secondary">❤️ Wishlist</button>
+          </div>
+
+          <div
+            class="product-card"
+            data-product-id="102"
+            data-product-name="Smartphone X"
+            data-product-price="899.99"
+            data-category="Electronics"
+          >
+            <img
+              src="https://via.placeholder.com/250x200/10b981/ffffff?text=Smartphone+X"
+              alt="Smartphone X"
+            />
+            <h3>Smartphone X</h3>
+            <div class="price">$899.99</div>
+            <button class="add-to-cart btn-primary">Add to Cart</button>
+            <button class="add-to-wishlist btn-secondary">❤️ Wishlist</button>
+          </div>
+
+          <div
+            class="product-card"
+            data-product-id="103"
+            data-product-name="Tablet Plus"
+            data-product-price="599.99"
+            data-category="Electronics"
+          >
+            <img
+              src="https://via.placeholder.com/250x200/f59e0b/ffffff?text=Tablet+Plus"
+              alt="Tablet Plus"
+            />
+            <h3>Tablet Plus</h3>
+            <div class="price">$599.99</div>
+            <button class="add-to-cart btn-primary">Add to Cart</button>
+            <button class="add-to-wishlist btn-secondary">❤️ Wishlist</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checkout Buttons -->
+      <div class="section">
+        <h2>💳 Checkout Actions</h2>
+        <div class="button-grid">
+          <button class="checkout-button btn-success">
+            Proceed to Checkout
+          </button>
+          <button class="proceed-to-checkout btn-success">
+            Continue to Checkout
+          </button>
+          <button class="btn-checkout btn-success">Go to Checkout</button>
+          <button id="checkout-btn" class="btn-success">
+            Complete Purchase
+          </button>
+        </div>
+      </div>
+
+      <!-- Wishlist & Compare -->
+      <div class="section">
+        <h2>❤️ Wishlist & Compare</h2>
+        <div class="button-grid">
+          <button class="add-to-wishlist btn-warning">Add to Wishlist</button>
+          <button class="save-for-later btn-warning">Save for Later</button>
+          <button class="add-to-favorites btn-warning">Add to Favorites</button>
+          <button class="add-to-compare btn-secondary">Compare Products</button>
+        </div>
+      </div>
+
+      <!-- Remove from Cart -->
+      <div class="section">
+        <h2>🗑️ Remove Actions</h2>
+        <div class="button-grid">
+          <button class="remove-from-cart btn-danger" data-product-id="123">
+            Remove from Cart
+          </button>
+          <button class="cart-item-remove btn-danger">Delete Item</button>
+          <button class="remove-product btn-danger">Remove Product</button>
+        </div>
+      </div>
+
+      <!-- Search Form -->
+      <div class="section">
+        <h2>🔍 Search</h2>
+        <form class="search-form" onsubmit="return false;">
+          <input type="search" name="q" placeholder="Search products..." />
+          <button type="submit" class="btn-primary">Search</button>
+        </form>
+      </div>
+
+      <!-- Newsletter Form -->
+      <div class="section">
+        <h2>📧 Newsletter Signup</h2>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" name="email" placeholder="Enter your email..." />
+          <button type="submit" class="btn-success">Subscribe</button>
+        </form>
+      </div>
+
+      <!-- Manual Event Tracking -->
+      <div class="section">
+        <h2>🎯 Manual Event Tracking</h2>
+        <p>Use <code>window.chatsiSDK.capture()</code> for custom events:</p>
+        <div class="button-grid">
+          <button
+            class="btn-secondary"
+            onclick="window.chatsiSDK.capture('custom_button_click', { button_id: 'test1' })"
+          >
+            Custom Event 1
+          </button>
+          <button
+            class="btn-secondary"
+            onclick="window.chatsiSDK.capture('promo_clicked', { promo_name: 'Summer Sale' })"
+          >
+            Custom Event 2
+          </button>
+          <button
+            class="btn-secondary"
+            onclick="window.chatsiSDK.identify('user_123', { email: 'test@example.com', name: 'John Doe' })"
+          >
+            Identify User
+          </button>
+          <button class="btn-secondary" onclick="window.chatsiSDK.reset()">
+            Reset Session
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chatsi Analytics SDK -->
+    <script
+      src="../dist/chatsi-analytics-sdk.min.js"
+      data-merchant-id="c2e126d8-395e-4429-b167-4e5757e99d08"
+      data-debug="true"
+    ></script>
+
+    <script>
+      // Optional: Log SDK status
+      console.log(
+        '%c🚀 Chatsi Analytics SDK Loaded!',
+        'color: #667eea; font-size: 16px; font-weight: bold;'
+      );
+      console.log(
+        '%cOpen the console to see tracked events',
+        'color: #666; font-size: 12px;'
+      );
+    </script>
+  </body>
+</html>
